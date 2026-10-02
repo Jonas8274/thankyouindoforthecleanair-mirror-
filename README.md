@@ -3,4 +3,4 @@
 
 Thank you Indonesia for the clean air you brought over!
 
-Mirror hosted on my pi due to the original site having firebase constraints)
+Mirror hosted on my pi due to the original site having firebase constraints
