@@ -281,22 +281,20 @@
   </div>
 
   <script type="module">
-    import { initializeApp } from 'firebase/app';
-    import { getDatabase, ref, onValue, runTransaction } from 'firebase/database';
+    const counterElement = document.querySelector(".thanks--counter");
+const incrementButton = document.getElementById("big-red-button");
+const render = (n) => { counterElement.textContent = Number(n).toLocaleString(); };
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyA1hciiiNxGqnf8OGfOn_706-A7XEyWpyg",
-      authDomain: "thankyouindoforthecleanair.firebaseapp.com",
-      databaseURL: "https://thankyouindoforthecleanair.firebaseio.com",
-      projectId: "thankyouindoforthecleanair",
-      storageBucket: "thankyouindoforthecleanair.firebasestorage.app",
-      messagingSenderId: "202426334002",
-      appId: "1:202426334002:web:94db24c6ca4e633b10b52b"
-    };
+fetch("/api/count").then(r => r.json()).then(d => render(d.count)).catch(() => {});
+if (window.EventSource) {
+  new EventSource("/api/stream").onmessage = (e) => render(JSON.parse(e.data).count);
+} else {
+  setInterval(() => fetch("/api/count").then(r => r.json()).then(d => render(d.count)), 5000);
+}
 
-    const app = initializeApp(firebaseConfig);
-    const database = getDatabase(app);
-
+function handleGlobalIncrement() {
+  fetch("/api/thank", { method: "POST" }).then(r => r.json()).then(d => render(d.count)).catch(() => {});
+}
     /* --- Global Thanks Counter Tracker --- */
 
     const counterElement = document.querySelector(".thanks--counter");
