@@ -291,32 +291,9 @@ if (window.EventSource) {
 } else {
   setInterval(() => fetch("/api/count").then(r => r.json()).then(d => render(d.count)), 5000);
 }
-
-function handleGlobalIncrement() {
+    function handleGlobalIncrement() {
   fetch("/api/thank", { method: "POST" }).then(r => r.json()).then(d => render(d.count)).catch(() => {});
 }
-    /* --- Global Thanks Counter Tracker --- */
-
-    const counterElement = document.querySelector(".thanks--counter");
-    const counterRef = ref(database, "incremental_counter");
-    const incrementButton = document.getElementById("big-red-button");
-
-    // Realtime Listener
-    onValue(counterRef, (snapshot) => {
-      const val = snapshot.val() || 0;
-      counterElement.textContent = val.toLocaleString();
-    });
-
-    // Increment Logic (Using Transaction)
-    function handleGlobalIncrement() {
-      runTransaction(counterRef, (currentCount) => {
-        // If currentCount is null (doesn't exist), start at 0, then add 1
-        return (currentCount || 0) + 1;
-      }).catch((error) => {
-        console.log("Transaction failed: ", error);
-        // Optional: You could alert the user "Check your internet!"
-      });
-    }
 
     /* --- Local Thanks Counter Tracker --- */
 
