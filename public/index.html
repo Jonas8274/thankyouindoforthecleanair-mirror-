@@ -306,7 +306,6 @@ if (window.EventSource) {
       localStorage.setItem("localCount", "0");
     }
 
-    // Note: localStorage stores strings, so we parse it to a number
     let localCount = parseInt(localStorage.getItem("localCount"), 10);
 
     const localCounterDisplay = document.getElementById("timesUserHasThankedIndonesia");
@@ -318,7 +317,6 @@ if (window.EventSource) {
       localStorage.setItem("localCount", localCount);
     }
 
-    /* --- Audio Setup --- */
     // Create the audio object once at the top
     const thankYouSound = new Audio("/assets/thankyou.m4a");
 
