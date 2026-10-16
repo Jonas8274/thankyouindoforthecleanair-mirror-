@@ -48,9 +48,21 @@
       height: auto;
     }
 
-    .flags {
-      height: 125px;
-    }
+.flag-row {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: clamp(0.25rem, 2vw, 1rem);
+  max-width: 85rem;
+  margin: 0 auto;
+  align-items: end;
+}
+
+.flags {
+  width: 100%;
+  max-width: 11rem;
+  height: auto;
+  justify-self: center;
+}
 
     .pattern-one--bg {
       background: url("/assets/Pattern1.gif") repeat fixed center;
