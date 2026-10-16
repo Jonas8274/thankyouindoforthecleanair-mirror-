@@ -7,28 +7,6 @@ body {
   padding: 0;
 }
 
-.donation-banner {
-  background: #ffff00;
-  color: royalblue;
-  padding: 1.2rem 1rem;
-  line-height: 1.3;
-}
-
-.donation-banner a {
-  color: inherit;
-}
-
-.donation-banner-main {
-  display: block;
-  font-size: clamp(1.2rem, 2.5vw, 2rem);
-  text-transform: uppercase;
-}
-
-.donation-banner-support {
-  margin: 0.5rem 0 0;
-  font-size: 1.05rem;
-}
-
 img {
   max-width: 100%;
   height: auto;
