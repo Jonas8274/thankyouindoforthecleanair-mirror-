@@ -1,4 +1,4 @@
-# [thankyouindoforthecleanair](https://jonas8272-pi4b.tailab8d60.ts.net:8443/)
+# [thankyouindoforthecleanair](https://haze.jonas8272.com/)
 ![VanillaJS](http://vanilla-js.com/assets/button.png) 
 
 Thank you Indonesia for the clean air you brought over!
