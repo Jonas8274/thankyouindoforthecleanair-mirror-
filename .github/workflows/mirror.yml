@@ -1,0 +1,16 @@
+name: Mirror to Codeberg
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Push to Codeberg
+        run: |
+          git remote add codeberg "https://${{ secrets.CODEBERG_USER }}:${{ secrets.CODEBERG_TOKEN }}@codeberg.org/${{ secrets.CODEBERG_USER }}/thankyouindoforthecleanair-mirror-.git"
+          git push --force codeberg "HEAD:refs/heads/${GITHUB_REF_NAME}"
+          git push --force codeberg --tags
